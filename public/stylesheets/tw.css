@@ -1,0 +1,44 @@
+* {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+.l { text-align: left; }
+.r { text-align: right; }
+
+body {
+    color: rgb(51,51,51);
+    background: rgb(250,255,252);
+    margin: 0;
+}
+
+p, iframe {
+    margin: 0 15%;
+    padding: 0.25em 0;
+}
+
+img { border: thin solid blue; }
+p { font-size: 50pt; }
+
+em {
+    border-bottom: thin dotted black;
+    font-style: normal;
+    font-weight: normal;
+}
+small {
+    display: block;
+    font-size: 25pt;
+}
+
+/* Javascript will enable our control. */
+#control { display: none; }
+#control.active { display: block !important; }
+
+#control {
+    padding: 1ex 0;
+    font-size: 25pt;
+}
+#control:hover {
+    background-color: #FFFF50;
+    cursor: pointer;
+}
