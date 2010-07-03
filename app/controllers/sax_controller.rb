@@ -21,8 +21,8 @@ class SaxController < ActionController::Base
 	'Called' => params[:victim],
 	'Url' => url_for(:action => 'index')
       })
+    return head :bad_request unless resp.kind_of? Net::HTTPSuccess
 
-    head :bad_request unless resp.kind_of? Net::HTTPSuccess
     render :xml => resp.body
   end
 end

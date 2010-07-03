@@ -42,3 +42,10 @@ small {
     background-color: #FFFF50;
     cursor: pointer;
 }
+
+#sax .inactive {
+    color: gray;
+}
+#sax .calling {
+    color: red;
+}

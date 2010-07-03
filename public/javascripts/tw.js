@@ -4,7 +4,7 @@ $(function() {
     var do_texts = [
 	'write code',
 	'dance awkwardly',
-	'can be reached at <code>scott@quadhome.com</code> via <a href="gtalk:chat?jid=scott@quadhome.com">GTalk</a> or <a href="xmpp:scott@quadhome.com">XMPP</a>',
+	'can be found on IM at <code>scott@quadhome.com</code> via <a href="gtalk:chat?jid=scott@quadhome.com">GTalk</a> or <a href="xmpp:scott@quadhome.com">XMPP</a>',
 	'don\'t take no for an answer'
     ];
 
@@ -50,4 +50,56 @@ $(function() {
     /* Load the slide from URL hash. */
     load_slide = $(document.location.hash);
     turn(load_slide.length ? load_slide : first_slide);
+});
+
+/* Epic Sax */
+$(function() {
+    var SAX_RATE = 2000;
+
+    $('#victim').addClass('inactive');
+
+    $('#victim').focus(function() {
+	$(this).val('');
+	$('#victim').removeClass('inactive');
+    });
+
+    $('#victim').blur(function() {
+	/* TODO: Re-entry clears user entered data. Don't care. */
+	if ($(this).val() == '') {
+	    $(this).val('+1 555 555-1212');
+
+	    $('#victim').addClass('inactive');
+	}
+    });
+
+    var sax_response = function(message, number) {
+	$('#victim').val(message);
+
+	setTimeout(function() {
+	    $('#button').removeAttr('disabled');
+	    $('#victim').removeAttr('disabled').removeClass('calling').val(number);
+	}, SAX_RATE);
+    }
+
+    $('#sax').submit(function() {
+	var number = $('#victim').val();
+
+	$.ajax({
+	    url: '/sax/call',
+	    type: 'POST',
+	    data: {victim: number},	/* Should sanitize here. But $20 on a prepaid account means I can trust people. */
+	    beforeSend: function() {
+		$('#button').attr('disabled', 'true');
+		$('#victim').attr('disabled', 'true').addClass('calling').val('Calling...');
+	    },
+	    success: function() {
+		sax_response('So smooth.', number);
+	    },
+	    error: function() {
+		sax_response('Wrong number?', number);
+	    },
+        });
+
+	return false;
+    });
 });
