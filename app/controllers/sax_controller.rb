@@ -7,7 +7,9 @@ CALLER_ID = '2067016325'
 
 class SaxController < ActionController::Base
   def index
-    render :xml => { :Play => URI.join(request.url, '/sax.mp3').to_s }.to_xml(:root => 'Response')
+    respond_to do |format|
+      format.xml
+    end
   end
 
   def call
