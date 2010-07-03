@@ -7,9 +7,7 @@ CALLER_ID = '2067016325'
 
 class SaxController < ActionController::Base
   def index
-    respond_to do |format|
-      format.xml
-    end
+    render action_name + '.xml.erb'
   end
 
   def call
