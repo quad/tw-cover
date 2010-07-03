@@ -5,7 +5,7 @@ ACCOUNT_SID = 'AC725017e91ee8b50b0cb223e4e3fe961a'
 ACCOUNT_TOKEN = 'f34e94b9d465831a88718fce57c91142'
 CALLER_ID = '2067016325'
 
-class SaxController < ApplicationController
+class SaxController < ActionController::Base
   def index
     render :xml => { :Play => URI.join(request.url, '/sax.mp3').to_s }.to_xml(:root => 'Response')
   end
