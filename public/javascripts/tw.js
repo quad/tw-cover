@@ -37,19 +37,20 @@ $(function() {
     var turn = function(target_slide) {
 	$('.shown').removeClass('shown').fadeOut('fast', function() {
 	    target_slide.addClass('shown').fadeIn('fast', function() {
-		$('#control').html((next_slide() == first_slide) ? '&lArr;' : '&rarr;');
-		document.location.hash = $(this).attr('id');
+		$('#control').attr('href', '#' + next_slide().attr('id'))
+		.html((next_slide() == first_slide) ? '&lArr;' : '&rarr;');
 	    });
 	});
     };
 
-    $('#control').click(function() {
-	turn(next_slide());
+    $.history.init(function(hash) {
+	if (hash) {
+	    load_slide = $('#' + hash);
+	    turn(load_slide.length ? load_slide : first_slide);
+	} else {
+	    document.location.hash = '#1';
+	}
     });
-
-    /* Load the slide from URL hash. */
-    load_slide = $(document.location.hash);
-    turn(load_slide.length ? load_slide : first_slide);
 });
 
 /* Epic Sax */
