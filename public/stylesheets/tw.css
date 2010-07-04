@@ -20,11 +20,6 @@ p, dl {
 a > img { border: thin solid blue; }
 p { font-size: 50pt; }
 
-em {
-    border-bottom: thin dotted black;
-    font-style: normal;
-    font-weight: normal;
-}
 small {
     display: block;
     font-size: 25pt;
