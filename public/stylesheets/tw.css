@@ -12,16 +12,16 @@ body {
     margin: 0;
 }
 
-p, dl {
+p {
     margin: 0 15%;
     padding: 0.25em 0;
+    font-size: 50pt;
 }
 
 a > img {
     border: thin solid blue;
     padding: 0.5em;
 }
-p { font-size: 50pt; }
 
 small {
     display: block;
@@ -29,21 +29,7 @@ small {
 }
 cite {
     display: block;
-    font-size: x-small;
-}
-
-dd {
-    border-left: thin solid black;
-    padding-left: 1em;
-    text-align: left;
-    margin-top: 1ex;
-}
-dt {
-    border-right: thin solid black;
-    padding-right: 1em;
-    text-align: right;
-    margin-bottom: 1ex;
-    font-style: italic;
+    font-size: 10pt;
 }
 
 /* Javascript will enable our control. */
