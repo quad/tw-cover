@@ -12,12 +12,12 @@ body {
     margin: 0;
 }
 
-p, iframe {
+p, dl {
     margin: 0 15%;
     padding: 0.25em 0;
 }
 
-img { border: thin solid blue; }
+a > img { border: thin solid blue; }
 p { font-size: 50pt; }
 
 em {
