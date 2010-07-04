@@ -55,6 +55,7 @@ dt {
 #control {
     padding: 1ex 0;
     font-size: 25pt;
+    text-decoration: none;
 }
 #control:hover {
     background-color: #FFFF50;
