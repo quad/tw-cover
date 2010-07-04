@@ -1,27 +1,3 @@
-/* Ridiculous rotating text fun. */
-$(function() {
-    var do_texts_index = 0;
-    var do_texts = [
-	'write code',
-	'dance awkwardly',
-	'can be found on IM at <code>scott@quadhome.com</code> via <a href="gtalk:chat?jid=scott@quadhome.com">GTalk</a> or <a href="xmpp:scott@quadhome.com">XMPP</a>',
-	'don\'t take no for an answer'
-    ];
-
-    var rotate_do = function() {
-	/* Only rotate if we're visible. */
-	if ($('#do').is(':visible')) {
-	    do_texts_index = (do_texts_index + 1) % do_texts.length;
-
-	    $('#do').fadeOut('slow', function() {
-		    $('#do').html(do_texts[do_texts_index]).fadeIn('slow');
-	    });
-	}
-    };
-
-    setInterval(rotate_do, 5000);
-});
-
 /* Slide flipping awesomeness. */
 $(function() {
     $('.slide').hide();
