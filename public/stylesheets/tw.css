@@ -17,7 +17,10 @@ p, dl {
     padding: 0.25em 0;
 }
 
-a > img { border: thin solid blue; }
+a > img {
+    border: thin solid blue;
+    padding: 0.5em;
+}
 p { font-size: 50pt; }
 
 small {
