@@ -29,6 +29,24 @@ small {
     display: block;
     font-size: 25pt;
 }
+cite {
+    display: block;
+    font-size: x-small;
+}
+
+dd {
+    border-left: thin solid black;
+    padding-left: 1em;
+    text-align: left;
+    margin-top: 1ex;
+}
+dt {
+    border-right: thin solid black;
+    padding-right: 1em;
+    text-align: right;
+    margin-bottom: 1ex;
+    font-style: italic;
+}
 
 /* Javascript will enable our control. */
 #control { display: none; }
