@@ -41,9 +41,9 @@ class AppTest < Test::Unit::TestCase
   end
 
   def test_sax_call_ok
-    cc_bahrain = '+1'
+    cc_us = '+1'
     VCR.use_cassette('ok') do
-      post '/sax/call', victim: cc_bahrain + '2062299142'
+      post '/sax/call', victim: cc_us + '2062299142'
     end
     assert last_response.ok?
     assert_match /^application\/xml/, last_response.content_type
