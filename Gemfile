@@ -5,7 +5,7 @@ ruby '2.4.1'
 
 gem 'puma'
 gem 'sinatra'
-gem 'twiliolib'
+gem 'twilio-ruby'
 
 group :development do
   gem 'rubocop'

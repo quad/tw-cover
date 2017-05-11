@@ -11,6 +11,18 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'vcr_cassettes'
   config.hook_into :webmock
+
+  # Mask Twilio credentials
+  ac_regexp = %r{AC[a-z0-9]{32}}
+  ac_mask = '{MaskedAccountID}'
+  config.before_playback do |i|
+    i.request.uri.sub! ac_mask, "#{ACCOUNT_SID}"
+  end
+  config.before_record do |i|
+    i.request.uri.sub! ac_regexp, ac_mask
+    i.request.headers['Authorization'] = ''
+    i.response.body.gsub! ac_regexp, ac_mask
+  end
 end
 
 class AppTest < Test::Unit::TestCase
@@ -34,19 +46,25 @@ class AppTest < Test::Unit::TestCase
     assert_match 'sax.mp3', last_response.body
   end
 
-  def test_sax_call_error_countrycode
-    cc_bahrain = '+973'
-    VCR.use_cassette('error') do
-      post '/sax/call', victim: cc_bahrain + '123456789'
+  def test_sax_call_error_invalid
+    VCR.use_cassette('error_invalid') do
+      assert_raise Twilio::REST::RequestError do
+        post '/sax/call', victim: '+15005550001'
+      end
     end
-    assert last_response.client_error?
-    assert_match %r{^application/xml}, last_response.content_type
+  end
+
+  def test_sax_call_error_countrycode
+    VCR.use_cassette('error_countrycode') do
+      assert_raise Twilio::REST::RequestError do
+        post '/sax/call', victim: '+15005550003'
+      end
+    end
   end
 
   def test_sax_call_ok
-    cc_us = '+1'
     VCR.use_cassette('ok') do
-      post '/sax/call', victim: cc_us + '2062299142'
+      post '/sax/call', victim: '+15005550005'
     end
     assert last_response.ok?
     assert_match %r{^application/xml}, last_response.content_type

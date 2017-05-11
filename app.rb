@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sinatra'
-require 'twiliolib'
+require 'twilio-ruby'
 
 ACCOUNT_SID = ENV['ACCOUNT_SID']
 ACCOUNT_TOKEN = ENV['ACCOUNT_TOKEN']
@@ -20,16 +20,11 @@ end
 post '/sax/call' do
   content_type :xml
 
-  account = Twilio::RestAccount.new(ACCOUNT_SID, ACCOUNT_TOKEN)
+  client = Twilio::REST::Client.new ACCOUNT_SID, ACCOUNT_TOKEN
 
-  resp = account.request(
-    "/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/Calls",
-    'POST',
-    'Caller' => CALLER_ID,
-    'Called' => params[:victim],
-    'Url' => url('/sax/twiml')
-  )
-  return halt 400, resp.body unless resp.is_a? Net::HTTPSuccess
-
-  resp.body
+  resp = client.calls.create(
+    from: CALLER_ID,
+    to: params[:victim],
+    url: url('/sax/twiml'),
+  ).sid
 end
