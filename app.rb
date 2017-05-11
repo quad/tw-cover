@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'twiliolib'
 
@@ -23,12 +25,11 @@ post '/sax/call' do
   resp = account.request(
     "/#{API_VERSION}/Accounts/#{ACCOUNT_SID}/Calls",
     'POST',
-    {
-      'Caller' => CALLER_ID,
-      'Called' => params[:victim],
-      'Url' => url('/sax/twiml'),
-    })
-  return halt 400, resp.body unless resp.kind_of? Net::HTTPSuccess
+    'Caller' => CALLER_ID,
+    'Called' => params[:victim],
+    'Url' => url('/sax/twiml')
+  )
+  return halt 400, resp.body unless resp.is_a? Net::HTTPSuccess
 
   resp.body
 end
