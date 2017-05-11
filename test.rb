@@ -21,6 +21,7 @@ class AppTest < Test::Unit::TestCase
   def test_index_has_dear_tw
     get '/'
     assert last_response.ok?
+    assert_match /^text\/html/, last_response.content_type
     assert_match 'Dear ThoughtWorks', last_response.body
   end
 
