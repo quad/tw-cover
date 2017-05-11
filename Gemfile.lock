@@ -11,11 +11,6 @@ GEM
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (1.2.8)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     safe_yaml (1.0.4)
     sinatra (1.2.9)
       backports
@@ -35,7 +30,6 @@ PLATFORMS
 
 DEPENDENCIES
   puma
-  rails_12factor
   sinatra
   twiliolib
   vcr
