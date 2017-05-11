@@ -18,8 +18,6 @@ post '/sax/twiml' do
 end
 
 post '/sax/call' do
-  content_type :json
-
   client = Twilio::REST::Client.new ACCOUNT_SID, ACCOUNT_TOKEN
 
   resp = client.calls.create(
