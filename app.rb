@@ -13,7 +13,7 @@ get '/' do
   send_file File.join(settings.public_folder, 'index.html')
 end
 
-get '/sax/call' do
+post '/sax/twiml' do
   erb 'sax/index.xml'.to_sym
 end
 
@@ -28,7 +28,7 @@ post '/sax/call' do
     {
       'Caller' => CALLER_ID,
       'Called' => params[:victim],
-      'Url' => url('/sax/call'),
+      'Url' => url('/sax/twiml'),
     })
   return halt 400, resp.body unless resp.kind_of? Net::HTTPSuccess
 
