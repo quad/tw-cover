@@ -18,7 +18,7 @@ post '/sax/twiml' do
 end
 
 post '/sax/call' do
-  content_type :xml
+  content_type :json
 
   client = Twilio::REST::Client.new ACCOUNT_SID, ACCOUNT_TOKEN
 
