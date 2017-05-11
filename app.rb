@@ -1,9 +1,6 @@
 require 'sinatra'
 require 'twiliolib'
 
-set :public_folder, File.dirname(__FILE__) + '/public'
-set :views, File.dirname(__FILE__) + '/app/views'
-
 ACCOUNT_SID = ENV['ACCOUNT_SID']
 ACCOUNT_TOKEN = ENV['ACCOUNT_TOKEN']
 CALLER_ID = ENV['CALLER_ID']
@@ -14,7 +11,8 @@ get '/' do
 end
 
 post '/sax/twiml' do
-  erb 'sax/index.xml'.to_sym
+  content_type :xml
+  erb :twiml
 end
 
 post '/sax/call' do

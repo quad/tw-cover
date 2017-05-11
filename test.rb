@@ -27,6 +27,7 @@ class AppTest < Test::Unit::TestCase
   def test_sax_call_twiml
     post '/sax/twiml'
     assert last_response.ok?
+    assert_match /^application\/xml/, last_response.content_type
     assert_match 'sax.mp3', last_response.body
   end
 
