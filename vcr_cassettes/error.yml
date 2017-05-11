@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2008-08-01/Accounts/AC6f65758a2dd88b42ea6a037faaa8da82/Calls
+    body:
+      encoding: US-ASCII
+      string: Caller=%2B12062070207&Called=%2B973123456789&Url=http%3A%2F%2Fexample.org%2Fsax%2Fcall
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Basic QUM2ZjY1NzU4YTJkZDg4YjQyZWE2YTAzN2ZhYWE4ZGE4MjpjYTE1MzQ4ZDAwNDEyMzc2NmU3NjYzZDc3MGNkNDMxMg==
+  response:
+    status:
+      code: 400
+      message: BAD REQUEST
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/xml; charset=utf-8
+      Date:
+      - Thu, 11 May 2017 11:06:01 GMT
+      Etag:
+      - ''
+      Last-Modified:
+      - ''
+      Twilio-Request-Duration:
+      - '0.140'
+      Twilio-Request-Id:
+      - RQbacdb76162bc497087dc37a78eb69e5d
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '385'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <TwilioResponse><RestException><Code>21215</Code><Message>Account not authorized to call +973123456789. Perhaps you need to enable some international permissions: https://www.twilio.com/user/account/settings/international</Message><MoreInfo>https://www.twilio.com/docs/errors/21215</MoreInfo><Status>400</Status></RestException></TwilioResponse>
+    http_version: 
+  recorded_at: Thu, 11 May 2017 11:06:01 GMT
+recorded_with: VCR 3.0.3

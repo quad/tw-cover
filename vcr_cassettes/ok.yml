@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2008-08-01/Accounts/AC6f65758a2dd88b42ea6a037faaa8da82/Calls
+    body:
+      encoding: US-ASCII
+      string: Caller=%2B12062070207&Called=%2B12062299142&Url=http%3A%2F%2Fexample.org%2Fsax%2Fcall
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Basic QUM2ZjY1NzU4YTJkZDg4YjQyZWE2YTAzN2ZhYWE4ZGE4MjpjYTE1MzQ4ZDAwNDEyMzc2NmU3NjYzZDc3MGNkNDMxMg==
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/xml; charset=utf-8
+      Date:
+      - Thu, 11 May 2017 11:06:02 GMT
+      Etag:
+      - de12918f2a908115162e683d78872562
+      Location:
+      - http://127.0.0.1/2008-08-01/Accounts/AC6f65758a2dd88b42ea6a037faaa8da82/Calls/CA69faa4a8fd5d6445cc666e7aacb01713
+      Strict-Transport-Security:
+      - max-age=15768000
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.135'
+      Twilio-Request-Id:
+      - RQ297f611733064cafa9f0c6275089c811
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '593'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <TwilioResponse><Call uri="/2008-08-01/Accounts/AC6f65758a2dd88b42ea6a037faaa8da82/Calls" firstpageuri="" previouspageuri="" nextpageuri="" lastpageuri=""><Sid>CA69faa4a8fd5d6445cc666e7aacb01713</Sid><DateCreated/><DateUpdated/><CallSegmentSid></CallSegmentSid><AccountSid>AC6f65758a2dd88b42ea6a037faaa8da82</AccountSid><Called>2062299142</Called><Caller>2062070207</Caller><PhoneNumberSid>PNf02bd05be4ed634ed702dd6f6b878bc9</PhoneNumberSid><Status>0</Status><StartTime/><EndTime/><Duration/><Price/><Flags>2</Flags><Annotation/></Call></TwilioResponse>
+    http_version: 
+  recorded_at: Thu, 11 May 2017 11:06:02 GMT
+recorded_with: VCR 3.0.3
