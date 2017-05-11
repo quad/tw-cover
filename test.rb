@@ -47,4 +47,10 @@ class AppTest < Test::Unit::TestCase
     assert last_response.ok?
     assert_match /^application\/xml/, last_response.content_type
   end
+
+  def test_mp3
+    get '/sax.mp3'
+    assert last_response.ok?
+    assert_equal 'audio/mpeg', last_response.content_type
+  end
 end
