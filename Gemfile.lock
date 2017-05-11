@@ -55,6 +55,11 @@ GEM
       activesupport (= 3.0.20)
       bundler (~> 1.0)
       railties (= 3.0.20)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (3.0.20)
       actionpack (= 3.0.20)
       activesupport (= 3.0.20)
@@ -78,6 +83,7 @@ PLATFORMS
 DEPENDENCIES
   puma
   rails (~> 3.0.0)
+  rails_12factor
   twiliolib
 
 RUBY VERSION
