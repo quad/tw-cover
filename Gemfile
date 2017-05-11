@@ -1,7 +1,8 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
+ruby '2.4.1'
 
 gem 'rails', '~> 3.0.0'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-
 gem 'twiliolib'
+
+gem 'puma'
