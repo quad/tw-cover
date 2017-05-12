@@ -13,11 +13,13 @@ VCR.configure do |config|
   config.hook_into :webmock
 
   # Mask Twilio credentials
-  ac_regexp = %r{AC[a-z0-9]{32}}
+  ac_regexp = /AC[a-z0-9]{32}/
   ac_mask = '{MaskedAccountID}'
+
   config.before_playback do |i|
-    i.request.uri.sub! ac_mask, "#{ACCOUNT_SID}"
+    i.request.uri.sub! ac_mask, ACCOUNT_SID
   end
+
   config.before_record do |i|
     i.request.uri.sub! ac_regexp, ac_mask
     i.request.headers['Authorization'] = ''
@@ -34,6 +36,7 @@ class AppTest < Test::Unit::TestCase
 
   def test_index_has_dear_tw
     get '/'
+
     assert last_response.ok?
     assert_match %r{^text/html}, last_response.content_type
     assert_match 'Dear ThoughtWorks', last_response.body
@@ -41,6 +44,7 @@ class AppTest < Test::Unit::TestCase
 
   def test_sax_call_twiml
     post '/sax/twiml'
+
     assert last_response.ok?
     assert_match %r{^application/xml}, last_response.content_type
     assert_match 'sax.mp3', last_response.body
@@ -66,12 +70,14 @@ class AppTest < Test::Unit::TestCase
     VCR.use_cassette('ok') do
       post '/sax/call', victim: '+15005550005'
     end
+
     assert last_response.ok?
     assert_match %r{^text/html}, last_response.content_type
   end
 
   def test_mp3
     get '/sax.mp3'
+
     assert last_response.ok?
     assert_equal 'audio/mpeg', last_response.content_type
   end

@@ -14,6 +14,7 @@ end
 
 post '/sax/twiml' do
   content_type :xml
+
   Twilio::TwiML::Response.new do |r|
     r.Play url('/sax.mp3'), loop: 0
   end.text
@@ -21,10 +22,9 @@ end
 
 post '/sax/call' do
   client = Twilio::REST::Client.new ACCOUNT_SID, ACCOUNT_TOKEN
-
-  resp = client.calls.create(
+  client.calls.create(
     from: CALLER_ID,
     to: params[:victim],
-    url: url('/sax/twiml'),
+    url: url('/sax/twiml')
   ).sid
 end
