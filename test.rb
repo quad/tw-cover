@@ -67,7 +67,7 @@ class AppTest < Test::Unit::TestCase
       post '/sax/call', victim: '+15005550005'
     end
     assert last_response.ok?
-    assert_match %r{^application/xml}, last_response.content_type
+    assert_match %r{^text/html}, last_response.content_type
   end
 
   def test_mp3
