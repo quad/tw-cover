@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 ENV['RACK_ENV'] = 'test'
+ENV['ACCOUNT_SID'] = 'AC_fake_id'
+ENV['ACCOUNT_TOKEN'] = 'AC_fake_token'
 
 require_relative 'app'
 require 'test/unit'

@@ -19,6 +19,8 @@ GEM
     rack (2.0.2)
     rack-protection (2.0.0)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rainbow (2.2.2)
       rake
     rake (12.0.0)
@@ -52,6 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   puma
+  rack-test
   rubocop
   sinatra
   twilio-ruby
@@ -59,7 +62,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 2.4.1p111
+   ruby 2.6.0p0
 
 BUNDLED WITH
-   1.14.6
+   1.17.2
