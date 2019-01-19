@@ -45,7 +45,7 @@ class AppTest < Test::Unit::TestCase
   end
 
   def test_sax_call_twiml
-    post '/sax/twiml'
+    post '/sax/twiml', "", {}
 
     assert last_response.ok?
     assert_match %r{^application/xml}, last_response.content_type
@@ -54,7 +54,7 @@ class AppTest < Test::Unit::TestCase
 
   def test_sax_call_error_invalid
     VCR.use_cassette('error_invalid') do
-      assert_raise Twilio::REST::RequestError do
+      assert_raise Twilio::REST::RestError do
         post '/sax/call', victim: '+15005550001'
       end
     end
@@ -62,7 +62,7 @@ class AppTest < Test::Unit::TestCase
 
   def test_sax_call_error_countrycode
     VCR.use_cassette('error_countrycode') do
-      assert_raise Twilio::REST::RequestError do
+      assert_raise Twilio::REST::RestError do
         post '/sax/call', victim: '+15005550003'
       end
     end

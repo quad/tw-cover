@@ -15,9 +15,9 @@ end
 post '/sax/twiml' do
   content_type :xml
 
-  Twilio::TwiML::Response.new do |r|
-    r.Play url('/sax.mp3'), loop: 0
-  end.text
+  Twilio::TwiML::VoiceResponse.new do |r|
+    r.play url: url('/sax.mp3'), loop: 0
+  end.to_s
 end
 
 post '/sax/call' do
